@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react'
 
 
 
-export default class ReconciliationForms extends React.Component {
+export default class ReconciliationForms extends Component {
   render() {
     return (
         <h1>ReconciliationForms</h1>

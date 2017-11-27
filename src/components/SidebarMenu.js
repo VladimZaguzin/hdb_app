@@ -1,5 +1,5 @@
-import React from 'react'
-import {List, ListItem} from 'material-ui/List'
+import React, { Component } from 'react'
+import { List, ListItem } from 'material-ui/List'
 import ActionGrade from 'material-ui/svg-icons/action/grade'
 import ContentInbox from 'material-ui/svg-icons/content/inbox'
 import ContentDrafts from 'material-ui/svg-icons/content/drafts'
@@ -12,13 +12,13 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import classnames from 'classnames'
 
 
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar'
+import Drawer from 'material-ui/Drawer'
 
-import {Link} from "react-router"
+import { Link } from "react-router"
 
 
-export default class SideBarMenu extends React.Component {
+export default class SidebarMenu extends Component {
   constructor(props){
     super(props)
     this.state = {open: false}
@@ -67,7 +67,7 @@ export default class SideBarMenu extends React.Component {
                             primaryText="Reconciliation Worklist Tab Forms"
                             leftIcon={<ActionGrade />}
                             containerElement={<Link to={`/ReconciliationForms`}/>}
-                        
+
                         />,
                         <ListItem
                             key={2}
@@ -101,7 +101,7 @@ export default class SideBarMenu extends React.Component {
                             key={6}
                             primaryText="Account Profile"
                             leftIcon={<ActionGrade />}
-                        />,                
+                        />,
                         <ListItem
                             key={7}
                             primaryText="Security Profile"
