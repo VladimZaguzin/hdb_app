@@ -1,23 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import {Router, Route, IndexRouter, hashHistory} from 'react-router'
+import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 
-import App from './components/app';
+import App from './App'
 
-import ReconciliationForms from './pages/ReconciliationForms';
-import Home from './pages/Home';
+import ReconciliationForms from './pages/ReconciliationForms'
+import Home from './pages/Home'
 
 
 ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path ="/" component={App}>
+  <Router history={hashHistory}>
+    <Route path ="/" component={App}>
+      <IndexRoute component={Home} />
+      <Route exact path='/ReconciliationForms' component={ReconciliationForms} />
 
-            <IndexRouter component={Home}></IndexRouter>
-            <Route path="ReconciliationForms" component={ReconciliationForms}/>
-        
-        </Route>
-    </Router>, document.getElementById('root'));
+    </Route>
 
-    
- 
+  </Router>, document.getElementById('root'))
