@@ -20,6 +20,9 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "@devexpress/dx-react-core": "^1.0.0-beta.1",
+    "@devexpress/dx-react-grid": "^1.0.0-beta.1",
+    "@devexpress/dx-react-grid-material-ui": "^1.0.0-beta.1",
     "body-parser": "^1.18.2",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
@@ -28,6 +31,8 @@
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.19.4",
     "react": "^15.3.2",
+    "react-data-grid": "^2.0.78",
+    "react-data-grid-addons": "^2.0.78",
     "react-dom": "^15.3.2",
     "react-icons": "^2.2.1",
     "react-router": "^3.2.0",

@@ -3,11 +3,38 @@
 
 
 
-/*
+
+
+    this.handleClose = this.handleClose.bind(this)
+
+  handleClose() {
+    this.setState({open: false})
+  }
 
 
 
 
+
+
+
+
+
+            <div className={classnames('app-content', {'expanded': this.state.open})}>
+               { this.props.children }
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div className={classnames('app-content', {'expanded': this.state.open})}>
 
 
 

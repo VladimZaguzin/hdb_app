@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import { List, ListItem } from 'material-ui/List'
+
 import ActionGrade from 'material-ui/svg-icons/action/grade'
 import ContentInbox from 'material-ui/svg-icons/content/inbox'
 import ContentDrafts from 'material-ui/svg-icons/content/drafts'
 import ContentSend from 'material-ui/svg-icons/content/send'
 import Subheader from 'material-ui/Subheader'
 import Toggle from 'material-ui/Toggle'
+
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import classnames from 'classnames'
 
+import classnames from 'classnames'
 
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
@@ -18,33 +20,34 @@ import Drawer from 'material-ui/Drawer'
 import { Link } from "react-router"
 
 
-export default class SidebarMenu extends Component {
+export default class SideBarMenu extends Component {
   constructor(props){
     super(props)
     this.state = {open: false}
     this.handleToggle = this.handleToggle.bind(this)
-    this.handleClose = this.handleClose.bind(this)
-  }
+}
 
-  handleToggle() {
-    this.setState({open: !this.state.open})
-  }
-
-  handleClose() {
-    this.setState({open: false})
+  handleToggle = () => {
+    this.setState((prevState, props)=>{
+        this.props.toggleContent()
+        return {
+            open: !prevState.open
+        }
+    })
   }
 
   render(){
     return (
-      <div>
-         <MuiThemeProvider muiTheme={getMuiTheme()}>
+
          <div>
             <AppBar
             className={classnames('app-bar', {'expanded': this.state.open})}
             onLeftIconButtonTouchTap={this.handleToggle}
+            
             title="Hercules"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
             />
+
             <Drawer
             docked={true}
             open={this.state.open}
@@ -55,6 +58,8 @@ export default class SidebarMenu extends Component {
                     key={0}
                     primaryText="Home"
                     leftIcon={<ActionGrade />}
+                    containerElement={<Link to={`/`} activeClassName="app-contant expanded"/>}
+
                     />
                     <ListItem
                     primaryText="Forms Menu"
@@ -126,10 +131,9 @@ export default class SidebarMenu extends Component {
                     />,
                 </List>
             </Drawer>
-          {<div className={classnames('app-content', {'expanded': this.state.open})}> { this.props.children } </div>}
         </div>
-      </MuiThemeProvider>
-      </div>
+
     )
   }
 }
+
