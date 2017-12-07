@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+
     "prestart": "node_modules/.bin/webpack",
-    "start": "node server.js",
-    "prod": "NODE_ENV=production node server.js",
     "postinstall": "webpack -p",
-    "build": "node node_modules/webpack/bin/webpack.js --display-error-details",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "start": "node server.js"
+
   },
   "author": "Vladimir Zaguzin",
   "license": "MIT",
