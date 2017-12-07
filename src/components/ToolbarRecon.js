@@ -69,7 +69,7 @@ export default class ToolbarRecon extends Component {
           value= {this.state.date}
         />
         </div>
-        <h4>Last CMS refresh  </h4>
+        <h4 style={{paddingleft:'5px'}}>Last CMS refresh  </h4>
         <div className = "lastRef">
         <TextField
           id="LastCMSrefresh"

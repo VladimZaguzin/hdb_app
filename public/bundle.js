@@ -42618,7 +42618,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'h4',
-	              null,
+	              { style: { paddingleft: '5px' } },
 	              'Last CMS refresh  '
 	            ),
 	            _react2.default.createElement(
