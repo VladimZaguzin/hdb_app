@@ -1,5 +1,5 @@
 const ReactDataGrid = require('react-data-grid');
-const { Toolbar, Data: { Selectors }, Editors } = require('react-data-grid-addons');
+const { Toolbar, Data: { Selectors },Filters: { NumericFilter, AutoCompleteFilter, MultiSelectFilter, SingleSelectFilter }, Editors } = require('react-data-grid-addons');
 const { AutoComplete: AutoCompleteEditor, DropDownEditor } = Editors;
 const React = require('react');
 
@@ -45,12 +45,14 @@ export default class GridItem extends React.Component {
         key: 'cmsAcctNum',
         name: 'CMS Acct Num',
         filterable: true,
+
         sortable: true
       },
       {
         key: 'cmsCusip',
         name: 'CMS CUSIP',
         filterable: true,
+
         sortable: true,
         editable: true
       },
@@ -58,6 +60,7 @@ export default class GridItem extends React.Component {
         key: 'cmsSecurityDescription',
         name: 'CMS Security Description',
         filterable: true,
+
         sortable: true,
         editable: true
       },
@@ -65,6 +68,7 @@ export default class GridItem extends React.Component {
         key: 'fundFamilyName',
         name: 'Fund Family Name',
         filterable: true,
+
         sortable: true,
         editable: true
       },
@@ -72,6 +76,7 @@ export default class GridItem extends React.Component {
         key: 'fundCoAcctId',
         name: 'Fund Co Acct Id',
         filterable: true,
+
         sortable: true
       },
       {
@@ -113,6 +118,7 @@ export default class GridItem extends React.Component {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toLocaleDateString();
   };
 
+
   createRows = (numberOfRows) => {
     let rows = [];
     for (let i = 1; i < numberOfRows; i++) {
@@ -151,6 +157,15 @@ export default class GridItem extends React.Component {
     this.setState({ sortColumn: sortColumn, sortDirection: sortDirection });
   };
 
+
+  rowGetter = (index) => {
+    return Selectors.getRows(this.state)[index];
+  };
+
+  rowsCount = () => {
+    return Selectors.getRows(this.state).length;
+  };
+
   handleFilterChange = (filter) => {
     let newFilters = Object.assign({}, this.state.filters);
     if (filter.filterTerm) {
@@ -158,9 +173,18 @@ export default class GridItem extends React.Component {
     } else {
       delete newFilters[filter.column.key];
     }
-
     this.setState({ filters: newFilters });
   };
+
+  getValidFilterValues = (columnId) => {
+    let values = this.state.rows.map(r => r[columnId]);
+    return values.filter((item, i, a) => { return i === a.indexOf(item); });
+  };
+
+  handleOnClearFilters = () => {
+    this.setState({ filters: {} });
+  };
+
 
   onClearFilters = () => {
     this.setState({ filters: {} });
@@ -190,7 +214,8 @@ export default class GridItem extends React.Component {
         minHeight={800}
         onAddFilter={this.handleFilterChange}
         onGridRowsUpdated={this.handleGridRowsUpdated}
-        onClearFilters={this.onClearFilters} />);
+        onClearFilters={this.onClearFilters} 
+      />);
   }
 }
 

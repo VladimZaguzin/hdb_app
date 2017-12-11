@@ -7,7 +7,7 @@ import ContentDrafts from 'material-ui/svg-icons/content/drafts'
 import ContentSend from 'material-ui/svg-icons/content/send'
 import Subheader from 'material-ui/Subheader'
 import Toggle from 'material-ui/Toggle'
-
+import FlatButton from 'material-ui/FlatButton';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -43,9 +43,10 @@ export default class SideBarMenu extends Component {
             <AppBar
             className={classnames('app-bar', {'expanded': this.state.open})}
             onLeftIconButtonTouchTap={this.handleToggle}
-            
+            iconElementRight={<FlatButton 
+                containerElement={<Link to="/LoginPage" />}
+                label="Login"/>}
             title="Hercules"
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
             />
 
             <Drawer
@@ -58,7 +59,7 @@ export default class SideBarMenu extends Component {
                     key={0}
                     primaryText="Home"
                     leftIcon={<ActionGrade />}
-                    containerElement={<Link to={`/`} activeClassName="app-contant expanded"/>}
+                    containerElement={<Link to={`/Home`} activeClassName="app-contant expanded"/>}
 
                     />
                     <ListItem

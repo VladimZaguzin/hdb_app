@@ -11,7 +11,6 @@ export default class ReconciliationForms  extends Component {
       <div>
         <ToolbarRecon />
         <div className="reconControll">
-          
 
         </div>
         <TabsControlled />

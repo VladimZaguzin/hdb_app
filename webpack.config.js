@@ -20,7 +20,11 @@ module.exports={
                 presets: ['es2015', 'react', 'stage-0'],
                 
             }
-        }, 
+        },
+        {
+            test: /\.(png|jpg|)$/,
+            loader: 'url-loader?limit=200000'
+          }, 
         {
             test: /\.css$/,
             loader: 'css-loader',
