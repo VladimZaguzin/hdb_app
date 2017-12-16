@@ -46,11 +46,17 @@
 
 
 
+    handleLoging = () => {
+        this.setState((prevState, props)=>{
+            return {
+                visibility: !prevState.visibility
+            }
+        })
+      }  
 
 
 
-
-
+      onClick={this.handleLoging} 
 
 
 
